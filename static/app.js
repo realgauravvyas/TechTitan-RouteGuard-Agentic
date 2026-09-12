@@ -2,7 +2,7 @@ let run=null,playing=false,busy=false;
 const $=id=>document.getElementById(id), money=n=>'₹'+n.toLocaleString('en-IN');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const labels={quantity:'Inventory coverage',budget:'Budget respected',carbon:'Carbon cap',deadline:'Delivery deadline',routes_open:'Routes available',ledger_matches:'Ledger reconciled',unique_orders:'No duplicate orders',stock_conserved:'Stock conservation',trusted_prices:'Source prices checked',receipt_links:'Receipts linked'};
-async function api(path,body){const res=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await res.json();if(!res.ok)throw Error(data.error||'Request failed');return data;}
+async function api(path,body){if(window.RouteGuardLocal)return window.RouteGuardLocal(path,body);const res=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await res.json();if(!res.ok)throw Error(data.error||'Request failed');return data;}
 function locked(){['create','step','inject','export'].forEach(id=>$(id).disabled=busy||playing);$('play').disabled=busy;$('play').textContent=playing?'Ⅱ Pause agent':'▶ Run agent';}
 async function guarded(fn){if(busy)return;busy=true;locked();$('error').textContent='';try{await fn();}catch(e){$('error').textContent=e.message;playing=false;}finally{busy=false;locked();}}
 async function create(){let goal={};['units','budget','deadline','carbon'].forEach(k=>goal[k]=Number($(k).value));run=await api('/api/runs',{scenario:$('scenario').value,goal});localStorage.setItem('routeguard-run',run.id);render();}

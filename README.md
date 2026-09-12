@@ -11,6 +11,8 @@ RouteGuard pursues a retail service goal inside a transactional logistics sandbo
 
 **Submission files:** [4:11 demo video](submission/TechTitan_video_agentic.mp4) · [Presentation](submission/TechTitan_presentation_agentic.pptx) · [Solution brief](submission/TechTitan_brief_agentic.pdf) · [Evaluation results](submission/TechTitan_evaluation_agentic.json)
 
+**Live demo:** [realgauravvyas.github.io/TechTitan-RouteGuard-Agentic](https://realgauravvyas.github.io/TechTitan-RouteGuard-Agentic/) - the same console, running entirely in your browser. Nothing to install.
+
 ## Run in one minute
 
 Requires **Python 3.10 or newer** and a modern browser. No packages, keys, account, paid API or internet connection is required to run the app.
@@ -42,6 +44,18 @@ python run_demo.py --scenario double_disruption --output submission/TechTitan_ev
 - Results: 80/80 oracle agreement; all 31 feasible cases pass the state verifier; 49 infeasible cases are identified correctly. The cheapest-first baseline finds feasible allocations in 28 cases. This is a limited sandbox comparison, not a general advantage claim.
 - `submission/TechTitan_evaluation_agentic.json` includes every generated case, inputs, outputs and timings.
 
+## Hosted demo and the browser engine
+
+The hosted page exists so judges can inspect the agent without installing Python. `engine.py` remains canonical: the tests and the benchmark run against it. `web/engine.js` is a line-for-line port of it, and `web/local.js` answers the same four routes as `server.py` from browser storage, so the interface code in `static/` is shared by both builds and cannot drift.
+
+The port is held to the Python implementation by an automated check:
+
+```sh
+node tools/conformance.mjs
+```
+
+It replays the demo through the browser engine and requires the result to equal `submission/TechTitan_evidence_agentic.json` event by event, including every SHA-256 receipt digest; it replays all five scenarios; and it re-runs all 80 benchmark cases, requiring identical allocations, identical search counts and identical baseline verdicts. GitHub Actions runs the Python tests and this check before publishing, so a diverging build cannot reach the demo URL.
+
 ## What makes this agentic
 
 The controller is a **symbolic, model-based planning agent**, with exact finite action search. It is not an LLM chatbot. The rules do not require an LLM; they require goal pursuit, tool interaction, persistent state, feedback, adaptation and verification. We demonstrate those properties directly.
@@ -64,6 +78,10 @@ The controller policy is explicit and finite. It does not learn a policy or gene
 | `docs/SELECTION.md` | Problem selection and rubric mapping |
 | `docs/DEMO_SCRIPT.md` | 3–5 minute demo narration and judging instructions |
 | `docs/JUDGE_QA.md` | Technical questions and honest answers |
+| `web/engine.js` | Browser port of `engine.py` for the hosted demo |
+| `web/local.js` | Serverless transport matching the `server.py` routes |
+| `tools/conformance.mjs` | Proves the browser engine matches `engine.py` exactly |
+| `tools/build_site.py` | Assembles the GitHub Pages build from `static/` and `web/` |
 | `submission/` | Presentation, brief, screen recording and machine-readable evidence |
 
 ## Data and scope
@@ -72,7 +90,7 @@ All supply data is original synthetic data. Odisha place names are geographic la
 
 The model has one SKU, one destination, five offers and indivisible ten-unit lots. Cancellation occurs before dispatch, releases all reserved stock, refunds the full charge and creates no sunk transport emissions. Time is a scenario-relative ETA snapshot; this prototype is not a wall-clock logistics simulator. Verification proves reservations and projected on-time coverage, not physical delivery. Production ERP integration, authentication, multi-SKU optimization, stochastic transit and partial/sunk costs are future work.
 
-The server binds only to localhost. It is intended for local judging, not public production hosting. Exported traces contain only synthetic operational data. `.env.example` is intentionally empty of credentials.
+The Python server binds only to localhost and is intended for local judging, not public production hosting. The GitHub Pages demo is a separate static build that runs the agent in the browser: it has no server, makes no network calls after loading, and stores runs only in that browser, so nothing a visitor does leaves the page. Exported traces contain only synthetic operational data. `.env.example` is intentionally empty of credentials.
 
 ## Submission
 
