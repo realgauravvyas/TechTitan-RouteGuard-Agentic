@@ -1,0 +1,1055 @@
+{
+  "id": "9ca08f696dcc",
+  "world": {
+    "goal": {
+      "units": 100,
+      "budget": 14000,
+      "deadline": 24,
+      "carbon": 110
+    },
+    "scenario": "double_disruption",
+    "offers": [
+      {
+        "id": "V1",
+        "name": "Cuttack direct",
+        "kind": "vendor",
+        "city": "Cuttack",
+        "stock": 100,
+        "cost": 900,
+        "carbon": 9,
+        "eta": 8,
+        "available": false
+      },
+      {
+        "id": "V2",
+        "name": "Puri distributor",
+        "kind": "vendor",
+        "city": "Puri",
+        "stock": 60,
+        "cost": 1000,
+        "carbon": 8,
+        "eta": 14,
+        "available": false
+      },
+      {
+        "id": "V3",
+        "name": "Khordha warehouse",
+        "kind": "transfer",
+        "city": "Khordha",
+        "stock": 0,
+        "cost": 1150,
+        "carbon": 4,
+        "eta": 10,
+        "available": true
+      },
+      {
+        "id": "V4",
+        "name": "Berhampur rail",
+        "kind": "vendor",
+        "city": "Berhampur",
+        "stock": 80,
+        "cost": 1250,
+        "carbon": 3,
+        "eta": 22,
+        "available": true
+      },
+      {
+        "id": "V5",
+        "name": "Express air cargo",
+        "kind": "vendor",
+        "city": "Cargo hub",
+        "stock": 100,
+        "cost": 1550,
+        "carbon": 18,
+        "eta": 5,
+        "available": true
+      }
+    ],
+    "initial_stock": {
+      "V1": 100,
+      "V2": 60,
+      "V3": 80,
+      "V4": 100,
+      "V5": 100
+    },
+    "revision": 5,
+    "on_hand": 20,
+    "demand": 120,
+    "original_shipment": {
+      "id": "S0",
+      "units": 100,
+      "eta": 36,
+      "status": "delayed"
+    },
+    "orders": [
+      {
+        "id": "V2",
+        "name": "Puri distributor",
+        "kind": "vendor",
+        "city": "Puri",
+        "stock": 60,
+        "cost": 1000,
+        "carbon": 8,
+        "eta": 14,
+        "available": true,
+        "units": 60,
+        "order_id": "R1",
+        "status": "cancelled",
+        "reservation_key": "revision-2"
+      },
+      {
+        "id": "V3",
+        "name": "Khordha warehouse",
+        "kind": "transfer",
+        "city": "Khordha",
+        "stock": 80,
+        "cost": 1150,
+        "carbon": 4,
+        "eta": 10,
+        "available": true,
+        "units": 40,
+        "order_id": "R2",
+        "status": "reserved",
+        "reservation_key": "revision-2"
+      },
+      {
+        "id": "V3",
+        "name": "Khordha warehouse",
+        "kind": "transfer",
+        "city": "Khordha",
+        "stock": 40,
+        "cost": 1150,
+        "carbon": 4,
+        "eta": 10,
+        "available": true,
+        "units": 40,
+        "order_id": "R3",
+        "status": "reserved",
+        "reservation_key": "revision-4"
+      },
+      {
+        "id": "V4",
+        "name": "Berhampur rail",
+        "kind": "vendor",
+        "city": "Berhampur",
+        "stock": 100,
+        "cost": 1250,
+        "carbon": 3,
+        "eta": 22,
+        "available": true,
+        "units": 20,
+        "order_id": "R4",
+        "status": "reserved",
+        "reservation_key": "revision-4"
+      }
+    ],
+    "ledger": [
+      {
+        "order_id": "R1",
+        "amount": 6000,
+        "kind": "debit"
+      },
+      {
+        "order_id": "R2",
+        "amount": 4600,
+        "kind": "debit"
+      },
+      {
+        "order_id": "R1",
+        "amount": -6000,
+        "kind": "refund"
+      },
+      {
+        "order_id": "R3",
+        "amount": 4600,
+        "kind": "debit"
+      },
+      {
+        "order_id": "R4",
+        "amount": 2500,
+        "kind": "debit"
+      }
+    ],
+    "receipts": {
+      "revision-2": {
+        "ok": true,
+        "digest": "85c64a08326916a1b39b71c746013bcafe0f55e717b1f25bc94ad74d8c7426ce",
+        "key": "revision-2",
+        "orders": [
+          "R1",
+          "R2"
+        ],
+        "revision": 3,
+        "totals": {
+          "units": 100,
+          "cost": 10600,
+          "carbon": 64,
+          "eta": 14
+        }
+      },
+      "revision-4": {
+        "ok": true,
+        "digest": "44801271dc9e224a7fb6f1778e13fca31bfcb1b7b4bfa0c18e47db722db19db9",
+        "key": "revision-4",
+        "orders": [
+          "R3",
+          "R4"
+        ],
+        "revision": 5,
+        "totals": {
+          "units": 60,
+          "cost": 7100,
+          "carbon": 22,
+          "eta": 22
+        }
+      }
+    },
+    "faults": [
+      "race",
+      "second"
+    ],
+    "phase": "done",
+    "status": "verified",
+    "observation": {
+      "revision": 4,
+      "demand": 120,
+      "on_hand": 20,
+      "missing": 60,
+      "original_shipment": {
+        "id": "S0",
+        "units": 100,
+        "eta": 36,
+        "status": "delayed"
+      },
+      "committed": {
+        "units": 40,
+        "cost": 4600,
+        "carbon": 16,
+        "eta": 10
+      },
+      "active_orders": [
+        {
+          "id": "V3",
+          "name": "Khordha warehouse",
+          "kind": "transfer",
+          "city": "Khordha",
+          "stock": 80,
+          "cost": 1150,
+          "carbon": 4,
+          "eta": 10,
+          "available": true,
+          "units": 40,
+          "order_id": "R2",
+          "status": "reserved",
+          "reservation_key": "revision-2"
+        }
+      ]
+    },
+    "catalog": [
+      {
+        "id": "V1",
+        "name": "Cuttack direct",
+        "kind": "vendor",
+        "city": "Cuttack",
+        "stock": 100,
+        "cost": 900,
+        "carbon": 9,
+        "eta": 8,
+        "available": false
+      },
+      {
+        "id": "V2",
+        "name": "Puri distributor",
+        "kind": "vendor",
+        "city": "Puri",
+        "stock": 60,
+        "cost": 1000,
+        "carbon": 8,
+        "eta": 14,
+        "available": false
+      },
+      {
+        "id": "V3",
+        "name": "Khordha warehouse",
+        "kind": "transfer",
+        "city": "Khordha",
+        "stock": 40,
+        "cost": 1150,
+        "carbon": 4,
+        "eta": 10,
+        "available": true
+      },
+      {
+        "id": "V4",
+        "name": "Berhampur rail",
+        "kind": "vendor",
+        "city": "Berhampur",
+        "stock": 100,
+        "cost": 1250,
+        "carbon": 3,
+        "eta": 22,
+        "available": true
+      },
+      {
+        "id": "V5",
+        "name": "Express air cargo",
+        "kind": "vendor",
+        "city": "Cargo hub",
+        "stock": 100,
+        "cost": 1550,
+        "carbon": 18,
+        "eta": 5,
+        "available": true
+      }
+    ],
+    "plan": {
+      "lines": [
+        {
+          "id": "V3",
+          "name": "Khordha warehouse",
+          "kind": "transfer",
+          "city": "Khordha",
+          "stock": 40,
+          "cost": 1150,
+          "carbon": 4,
+          "eta": 10,
+          "available": true,
+          "units": 40
+        },
+        {
+          "id": "V4",
+          "name": "Berhampur rail",
+          "kind": "vendor",
+          "city": "Berhampur",
+          "stock": 100,
+          "cost": 1250,
+          "carbon": 3,
+          "eta": 22,
+          "available": true,
+          "units": 20
+        }
+      ],
+      "totals": {
+        "units": 60,
+        "cost": 7100,
+        "carbon": 22,
+        "eta": 22
+      },
+      "score": [
+        7100,
+        22,
+        22,
+        [
+          40,
+          20
+        ]
+      ]
+    },
+    "verification": {
+      "ok": true,
+      "checks": {
+        "quantity": true,
+        "budget": true,
+        "carbon": true,
+        "deadline": true,
+        "routes_open": true,
+        "ledger_matches": true,
+        "unique_orders": true,
+        "stock_conserved": true,
+        "trusted_prices": true,
+        "receipt_links": true
+      },
+      "totals": {
+        "units": 100,
+        "cost": 11700,
+        "carbon": 38,
+        "eta": 22
+      },
+      "net_spend": 11700,
+      "scope": "Verified reservations and simulated on-time inventory projection; physical delivery is not claimed"
+    },
+    "replan_count": 2,
+    "steps": 16,
+    "last_error": "STALE_REVISION",
+    "baseline": {
+      "totals": {
+        "units": 100,
+        "cost": 9000,
+        "carbon": 90,
+        "eta": 8
+      },
+      "feasible": true,
+      "description": "Cheapest-first allocation without global constraint search; no failure recovery"
+    },
+    "catalog_revision": 4,
+    "search": {
+      "best": {
+        "lines": [
+          {
+            "id": "V3",
+            "name": "Khordha warehouse",
+            "kind": "transfer",
+            "city": "Khordha",
+            "stock": 40,
+            "cost": 1150,
+            "carbon": 4,
+            "eta": 10,
+            "available": true,
+            "units": 40
+          },
+          {
+            "id": "V4",
+            "name": "Berhampur rail",
+            "kind": "vendor",
+            "city": "Berhampur",
+            "stock": 100,
+            "cost": 1250,
+            "carbon": 3,
+            "eta": 22,
+            "available": true,
+            "units": 20
+          }
+        ],
+        "totals": {
+          "units": 60,
+          "cost": 7100,
+          "carbon": 22,
+          "eta": 22
+        },
+        "score": [
+          7100,
+          22,
+          22,
+          [
+            40,
+            20
+          ]
+        ]
+      },
+      "examined": 245,
+      "feasible": 24,
+      "rejected": {
+        "quantity": 220,
+        "budget": 0,
+        "carbon": 1
+      },
+      "objective": "Minimize cost, then carbon, then latest ETA; exact 10-unit lot search"
+    }
+  },
+  "events": [
+    {
+      "kind": "observation",
+      "tool": "inventory.read + shipment.read",
+      "title": "Service objective at risk",
+      "detail": "100 units still need coverage. Original shipment ETA is 36h; deadline is 24h.",
+      "result": {
+        "revision": 1,
+        "demand": 120,
+        "on_hand": 20,
+        "missing": 100,
+        "original_shipment": {
+          "id": "S0",
+          "units": 100,
+          "eta": 36,
+          "status": "delayed"
+        },
+        "committed": {
+          "units": 0,
+          "cost": 0,
+          "carbon": 0,
+          "eta": 0
+        },
+        "active_orders": []
+      },
+      "seq": 1,
+      "timestamp": 1789203313.9779239
+    },
+    {
+      "kind": "tool",
+      "tool": "vendor.list + route.lookup",
+      "title": "Inspect recovery alternatives",
+      "detail": "Read live capacity, route availability, cost, carbon and arrival estimates.",
+      "result": [
+        {
+          "id": "V1",
+          "name": "Cuttack direct",
+          "kind": "vendor",
+          "city": "Cuttack",
+          "stock": 100,
+          "cost": 900,
+          "carbon": 9,
+          "eta": 8,
+          "available": true
+        },
+        {
+          "id": "V2",
+          "name": "Puri distributor",
+          "kind": "vendor",
+          "city": "Puri",
+          "stock": 60,
+          "cost": 1000,
+          "carbon": 8,
+          "eta": 14,
+          "available": true
+        },
+        {
+          "id": "V3",
+          "name": "Khordha warehouse",
+          "kind": "transfer",
+          "city": "Khordha",
+          "stock": 80,
+          "cost": 1150,
+          "carbon": 4,
+          "eta": 10,
+          "available": true
+        },
+        {
+          "id": "V4",
+          "name": "Berhampur rail",
+          "kind": "vendor",
+          "city": "Berhampur",
+          "stock": 100,
+          "cost": 1250,
+          "carbon": 3,
+          "eta": 22,
+          "available": true
+        },
+        {
+          "id": "V5",
+          "name": "Express air cargo",
+          "kind": "vendor",
+          "city": "Cargo hub",
+          "stock": 100,
+          "cost": 1550,
+          "carbon": 18,
+          "eta": 5,
+          "available": true
+        }
+      ],
+      "seq": 2,
+      "timestamp": 1789203314.0269802
+    },
+    {
+      "kind": "decision",
+      "tool": "allocation.optimize",
+      "title": "Choose the least-cost feasible allocation",
+      "detail": "Compared 83,853 allocations; 798 feasible. Selected INR 9,000 with 90 kg CO2e.",
+      "result": {
+        "best": {
+          "lines": [
+            {
+              "id": "V1",
+              "name": "Cuttack direct",
+              "kind": "vendor",
+              "city": "Cuttack",
+              "stock": 100,
+              "cost": 900,
+              "carbon": 9,
+              "eta": 8,
+              "available": true,
+              "units": 100
+            }
+          ],
+          "totals": {
+            "units": 100,
+            "cost": 9000,
+            "carbon": 90,
+            "eta": 8
+          },
+          "score": [
+            9000,
+            90,
+            8,
+            [
+              100
+            ]
+          ]
+        },
+        "examined": 83853,
+        "feasible": 798,
+        "rejected": {
+          "quantity": 82892,
+          "budget": 30,
+          "carbon": 133
+        },
+        "objective": "Minimize cost, then carbon, then latest ETA; exact 10-unit lot search"
+      },
+      "seq": 3,
+      "timestamp": 1789203314.0810966
+    },
+    {
+      "kind": "disruption",
+      "tool": "environment.close_route",
+      "title": "Supplier withdrawn before commit",
+      "detail": "The simulator changes availability after planning. The pending plan is now stale.",
+      "result": {
+        "closed": "V1",
+        "cancelled": [],
+        "revision": 2
+      },
+      "seq": 4,
+      "timestamp": 1789203314.1236308
+    },
+    {
+      "kind": "adaptation",
+      "tool": "logistics.commit",
+      "title": "Action rejected; refresh and replan",
+      "detail": "The failed transaction made no purchase. The agent returns to observation using the tool error.",
+      "result": {
+        "ok": false,
+        "error": "STALE_REVISION",
+        "expected": 1,
+        "actual": 2
+      },
+      "seq": 5,
+      "timestamp": 1789203314.152629
+    },
+    {
+      "kind": "observation",
+      "tool": "inventory.read + shipment.read",
+      "title": "Service objective at risk",
+      "detail": "100 units still need coverage. Original shipment ETA is 36h; deadline is 24h.",
+      "result": {
+        "revision": 2,
+        "demand": 120,
+        "on_hand": 20,
+        "missing": 100,
+        "original_shipment": {
+          "id": "S0",
+          "units": 100,
+          "eta": 36,
+          "status": "delayed"
+        },
+        "committed": {
+          "units": 0,
+          "cost": 0,
+          "carbon": 0,
+          "eta": 0
+        },
+        "active_orders": []
+      },
+      "seq": 6,
+      "timestamp": 1789203314.1876283
+    },
+    {
+      "kind": "tool",
+      "tool": "vendor.list + route.lookup",
+      "title": "Inspect recovery alternatives",
+      "detail": "Read live capacity, route availability, cost, carbon and arrival estimates.",
+      "result": [
+        {
+          "id": "V1",
+          "name": "Cuttack direct",
+          "kind": "vendor",
+          "city": "Cuttack",
+          "stock": 100,
+          "cost": 900,
+          "carbon": 9,
+          "eta": 8,
+          "available": false
+        },
+        {
+          "id": "V2",
+          "name": "Puri distributor",
+          "kind": "vendor",
+          "city": "Puri",
+          "stock": 60,
+          "cost": 1000,
+          "carbon": 8,
+          "eta": 14,
+          "available": true
+        },
+        {
+          "id": "V3",
+          "name": "Khordha warehouse",
+          "kind": "transfer",
+          "city": "Khordha",
+          "stock": 80,
+          "cost": 1150,
+          "carbon": 4,
+          "eta": 10,
+          "available": true
+        },
+        {
+          "id": "V4",
+          "name": "Berhampur rail",
+          "kind": "vendor",
+          "city": "Berhampur",
+          "stock": 100,
+          "cost": 1250,
+          "carbon": 3,
+          "eta": 22,
+          "available": true
+        },
+        {
+          "id": "V5",
+          "name": "Express air cargo",
+          "kind": "vendor",
+          "city": "Cargo hub",
+          "stock": 100,
+          "cost": 1550,
+          "carbon": 18,
+          "eta": 5,
+          "available": true
+        }
+      ],
+      "seq": 7,
+      "timestamp": 1789203314.2267246
+    },
+    {
+      "kind": "decision",
+      "tool": "allocation.optimize",
+      "title": "Choose the least-cost feasible allocation",
+      "detail": "Compared 7,623 allocations; 208 feasible. Selected INR 10,600 with 64 kg CO2e.",
+      "result": {
+        "best": {
+          "lines": [
+            {
+              "id": "V2",
+              "name": "Puri distributor",
+              "kind": "vendor",
+              "city": "Puri",
+              "stock": 60,
+              "cost": 1000,
+              "carbon": 8,
+              "eta": 14,
+              "available": true,
+              "units": 60
+            },
+            {
+              "id": "V3",
+              "name": "Khordha warehouse",
+              "kind": "transfer",
+              "city": "Khordha",
+              "stock": 80,
+              "cost": 1150,
+              "carbon": 4,
+              "eta": 10,
+              "available": true,
+              "units": 40
+            }
+          ],
+          "totals": {
+            "units": 100,
+            "cost": 10600,
+            "carbon": 64,
+            "eta": 14
+          },
+          "score": [
+            10600,
+            64,
+            14,
+            [
+              60,
+              40
+            ]
+          ]
+        },
+        "examined": 7623,
+        "feasible": 208,
+        "rejected": {
+          "quantity": 7361,
+          "budget": 22,
+          "carbon": 32
+        },
+        "objective": "Minimize cost, then carbon, then latest ETA; exact 10-unit lot search"
+      },
+      "seq": 8,
+      "timestamp": 1789203314.265867
+    },
+    {
+      "kind": "action",
+      "tool": "logistics.commit",
+      "title": "Recovery reservations committed",
+      "detail": "Capacity and budget were checked again. Orders, inventory deductions, ledger entries and receipt were saved atomically.",
+      "result": {
+        "ok": true,
+        "digest": "85c64a08326916a1b39b71c746013bcafe0f55e717b1f25bc94ad74d8c7426ce",
+        "key": "revision-2",
+        "orders": [
+          "R1",
+          "R2"
+        ],
+        "revision": 3,
+        "totals": {
+          "units": 100,
+          "cost": 10600,
+          "carbon": 64,
+          "eta": 14
+        }
+      },
+      "seq": 9,
+      "timestamp": 1789203314.301536
+    },
+    {
+      "kind": "verification",
+      "tool": "outcome.verify",
+      "title": "All 10 independent checks passed",
+      "detail": "Read back reservations, stock and ledger; recompute quantity, spend, carbon and deadline.",
+      "result": {
+        "ok": true,
+        "checks": {
+          "quantity": true,
+          "budget": true,
+          "carbon": true,
+          "deadline": true,
+          "routes_open": true,
+          "ledger_matches": true,
+          "unique_orders": true,
+          "stock_conserved": true,
+          "trusted_prices": true,
+          "receipt_links": true
+        },
+        "totals": {
+          "units": 100,
+          "cost": 10600,
+          "carbon": 64,
+          "eta": 14
+        },
+        "net_spend": 10600,
+        "scope": "Verified reservations and simulated on-time inventory projection; physical delivery is not claimed"
+      },
+      "seq": 10,
+      "timestamp": 1789203314.3426468
+    },
+    {
+      "kind": "disruption",
+      "tool": "shipment.monitor",
+      "title": "Second disruption after reservation",
+      "detail": "A reserved route closes before dispatch. Cancel affected orders, refund the simulated charge, preserve unaffected reservations, and recover the new shortfall.",
+      "result": {
+        "closed": "V2",
+        "cancelled": [
+          "R1"
+        ],
+        "revision": 4
+      },
+      "seq": 11,
+      "timestamp": 1789203314.377642
+    },
+    {
+      "kind": "observation",
+      "tool": "inventory.read + shipment.read",
+      "title": "Service objective at risk",
+      "detail": "60 units still need coverage. Original shipment ETA is 36h; deadline is 24h.",
+      "result": {
+        "revision": 4,
+        "demand": 120,
+        "on_hand": 20,
+        "missing": 60,
+        "original_shipment": {
+          "id": "S0",
+          "units": 100,
+          "eta": 36,
+          "status": "delayed"
+        },
+        "committed": {
+          "units": 40,
+          "cost": 4600,
+          "carbon": 16,
+          "eta": 10
+        },
+        "active_orders": [
+          {
+            "id": "V3",
+            "name": "Khordha warehouse",
+            "kind": "transfer",
+            "city": "Khordha",
+            "stock": 80,
+            "cost": 1150,
+            "carbon": 4,
+            "eta": 10,
+            "available": true,
+            "units": 40,
+            "order_id": "R2",
+            "status": "reserved",
+            "reservation_key": "revision-2"
+          }
+        ]
+      },
+      "seq": 12,
+      "timestamp": 1789203314.427645
+    },
+    {
+      "kind": "tool",
+      "tool": "vendor.list + route.lookup",
+      "title": "Inspect recovery alternatives",
+      "detail": "Read live capacity, route availability, cost, carbon and arrival estimates.",
+      "result": [
+        {
+          "id": "V1",
+          "name": "Cuttack direct",
+          "kind": "vendor",
+          "city": "Cuttack",
+          "stock": 100,
+          "cost": 900,
+          "carbon": 9,
+          "eta": 8,
+          "available": false
+        },
+        {
+          "id": "V2",
+          "name": "Puri distributor",
+          "kind": "vendor",
+          "city": "Puri",
+          "stock": 60,
+          "cost": 1000,
+          "carbon": 8,
+          "eta": 14,
+          "available": false
+        },
+        {
+          "id": "V3",
+          "name": "Khordha warehouse",
+          "kind": "transfer",
+          "city": "Khordha",
+          "stock": 40,
+          "cost": 1150,
+          "carbon": 4,
+          "eta": 10,
+          "available": true
+        },
+        {
+          "id": "V4",
+          "name": "Berhampur rail",
+          "kind": "vendor",
+          "city": "Berhampur",
+          "stock": 100,
+          "cost": 1250,
+          "carbon": 3,
+          "eta": 22,
+          "available": true
+        },
+        {
+          "id": "V5",
+          "name": "Express air cargo",
+          "kind": "vendor",
+          "city": "Cargo hub",
+          "stock": 100,
+          "cost": 1550,
+          "carbon": 18,
+          "eta": 5,
+          "available": true
+        }
+      ],
+      "seq": 13,
+      "timestamp": 1789203314.4632623
+    },
+    {
+      "kind": "decision",
+      "tool": "allocation.optimize",
+      "title": "Choose the least-cost feasible allocation",
+      "detail": "Compared 245 allocations; 24 feasible. Selected INR 7,100 with 22 kg CO2e.",
+      "result": {
+        "best": {
+          "lines": [
+            {
+              "id": "V3",
+              "name": "Khordha warehouse",
+              "kind": "transfer",
+              "city": "Khordha",
+              "stock": 40,
+              "cost": 1150,
+              "carbon": 4,
+              "eta": 10,
+              "available": true,
+              "units": 40
+            },
+            {
+              "id": "V4",
+              "name": "Berhampur rail",
+              "kind": "vendor",
+              "city": "Berhampur",
+              "stock": 100,
+              "cost": 1250,
+              "carbon": 3,
+              "eta": 22,
+              "available": true,
+              "units": 20
+            }
+          ],
+          "totals": {
+            "units": 60,
+            "cost": 7100,
+            "carbon": 22,
+            "eta": 22
+          },
+          "score": [
+            7100,
+            22,
+            22,
+            [
+              40,
+              20
+            ]
+          ]
+        },
+        "examined": 245,
+        "feasible": 24,
+        "rejected": {
+          "quantity": 220,
+          "budget": 0,
+          "carbon": 1
+        },
+        "objective": "Minimize cost, then carbon, then latest ETA; exact 10-unit lot search"
+      },
+      "seq": 14,
+      "timestamp": 1789203314.5017755
+    },
+    {
+      "kind": "action",
+      "tool": "logistics.commit",
+      "title": "Recovery reservations committed",
+      "detail": "Capacity and budget were checked again. Orders, inventory deductions, ledger entries and receipt were saved atomically.",
+      "result": {
+        "ok": true,
+        "digest": "44801271dc9e224a7fb6f1778e13fca31bfcb1b7b4bfa0c18e47db722db19db9",
+        "key": "revision-4",
+        "orders": [
+          "R3",
+          "R4"
+        ],
+        "revision": 5,
+        "totals": {
+          "units": 60,
+          "cost": 7100,
+          "carbon": 22,
+          "eta": 22
+        }
+      },
+      "seq": 15,
+      "timestamp": 1789203314.5397773
+    },
+    {
+      "kind": "verification",
+      "tool": "outcome.verify",
+      "title": "All 10 independent checks passed",
+      "detail": "Read back reservations, stock and ledger; recompute quantity, spend, carbon and deadline.",
+      "result": {
+        "ok": true,
+        "checks": {
+          "quantity": true,
+          "budget": true,
+          "carbon": true,
+          "deadline": true,
+          "routes_open": true,
+          "ledger_matches": true,
+          "unique_orders": true,
+          "stock_conserved": true,
+          "trusted_prices": true,
+          "receipt_links": true
+        },
+        "totals": {
+          "units": 100,
+          "cost": 11700,
+          "carbon": 38,
+          "eta": 22
+        },
+        "net_spend": 11700,
+        "scope": "Verified reservations and simulated on-time inventory projection; physical delivery is not claimed"
+      },
+      "seq": 16,
+      "timestamp": 1789203314.5798187
+    }
+  ]
+}
