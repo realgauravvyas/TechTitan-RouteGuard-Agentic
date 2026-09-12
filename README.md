@@ -9,6 +9,8 @@ Shivam Salve - Member
 
 RouteGuard pursues a retail service goal inside a transactional logistics sandbox. It monitors a delayed shipment, searches feasible supplier allocations, reserves inventory, observes failures, replans from fresh state and independently verifies the outcome. A browser console exposes every tool call and its evidence.
 
+**Submission files:** [4:11 demo video](submission/TechTitan_video_agentic.mp4) · [Presentation](submission/TechTitan_presentation_agentic.pptx) · [Solution brief](submission/TechTitan_brief_agentic.pdf) · [Evaluation results](submission/TechTitan_evaluation_agentic.json)
+
 ## Run in one minute
 
 Requires **Python 3.10 or newer** and a modern browser. No packages, keys, account, paid API or internet connection is required to run the app.
