@@ -21,10 +21,10 @@ def make_handler(store):
             path=urlparse(self.path).path
             try:
                 if path=='/api/scenarios': return self.send(200,SCENARIOS)
-                if path.startswith('/api/runs/'):
-                    rid=path.split('/')[3]
-                    return self.send(200,store.get(rid))
-                files={'/':('index.html','text/html; charset=utf-8'),'/app.js':('app.js','text/javascript; charset=utf-8'),'/style.css':('style.css','text/css; charset=utf-8')}
+                parts=path.strip('/').split('/')
+                if len(parts)==3 and parts[:2]==['api','runs'] and parts[2]:
+                    return self.send(200,store.get(parts[2]))
+                files={'/':('index.html','text/html; charset=utf-8'),'/index.html':('index.html','text/html; charset=utf-8'),'/app.js':('app.js','text/javascript; charset=utf-8'),'/style.css':('style.css','text/css; charset=utf-8')}
                 if path in files:
                     name,ctype=files[path];return self.send(200,(ROOT/'static'/name).read_bytes(),ctype)
                 return self.send(404,{'error':'Not found'})
