@@ -72,14 +72,10 @@ The controller policy is explicit and finite. It does not learn a policy or gene
 | `evaluate.py` | Seeded evaluation and independent oracle |
 | `run_demo.py` | Command-line demo and evidence export |
 | `docs/ARCHITECTURE.md` | Component diagram, contracts, objective and failure behavior |
-| `docs/SELECTION.md` | Problem selection and rubric mapping |
-| `docs/DEMO_SCRIPT.md` | 3–5 minute demo narration and judging instructions |
-| `docs/JUDGE_QA.md` | Technical questions and honest answers |
 | `web/engine.js` | Browser port of `engine.py` for the hosted demo |
 | `web/local.js` | Serverless transport matching the `server.py` routes |
 | `tools/conformance.mjs` | Proves the browser engine matches `engine.py` exactly |
 | `tools/build_site.py` | Assembles the GitHub Pages build from `static/` and `web/` |
-| `submission/` | Solution brief |
 
 ## Data and scope
 

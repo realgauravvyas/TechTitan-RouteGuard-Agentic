@@ -6,8 +6,9 @@ data/*.sqlite3*
 work/
 site/
 
-# generated submission outputs and media, kept local
-submission/*.json
-submission/*.mp4
-submission/*.srt
-submission/*.pptx
+# hackathon submission artifacts, kept local
+/submission/
+docs/DEMO_SCRIPT.md
+docs/JUDGE_QA.md
+docs/SELECTION.md
+docs/SUBMISSION_CHECKLIST.md
