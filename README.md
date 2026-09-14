@@ -9,8 +9,6 @@ Shivam Salve - Member
 
 RouteGuard pursues a retail service goal inside a transactional logistics sandbox. It monitors a delayed shipment, searches feasible supplier allocations, reserves inventory, observes failures, replans from fresh state and independently verifies the outcome. A browser console exposes every tool call and its evidence.
 
-**Submission files:** [4:11 demo video](submission/TechTitan_video_agentic.mp4) · [Presentation](submission/TechTitan_presentation_agentic.pptx) · [Solution brief](submission/TechTitan_brief_agentic.pdf) · [Evaluation results](submission/TechTitan_evaluation_agentic.json)
-
 **Live demo:** [realgauravvyas.github.io/TechTitan-RouteGuard-Agentic](https://realgauravvyas.github.io/TechTitan-RouteGuard-Agentic/) - the same console, running entirely in your browser. Nothing to install.
 
 ## Run in one minute
@@ -42,7 +40,6 @@ python run_demo.py --scenario double_disruption --output submission/TechTitan_ev
 - 17 automated tests cover atomic actions, duplicate requests, stale snapshots, capacity failures, forged prices, stock/ledger tampering, restart recovery, concurrent steps, live outages and HTTP validation.
 - The benchmark generates 80 synthetic cases using seed 1742838. An independently implemented dynamic-programming oracle checks feasibility and the cost/carbon/ETA objective.
 - Results: 80/80 oracle agreement; all 31 feasible cases pass the state verifier; 49 infeasible cases are identified correctly. The cheapest-first baseline finds feasible allocations in 28 cases. This is a limited sandbox comparison, not a general advantage claim.
-- `submission/TechTitan_evaluation_agentic.json` includes every generated case, inputs, outputs and timings.
 
 ## Hosted demo and the browser engine
 
@@ -82,7 +79,7 @@ The controller policy is explicit and finite. It does not learn a policy or gene
 | `web/local.js` | Serverless transport matching the `server.py` routes |
 | `tools/conformance.mjs` | Proves the browser engine matches `engine.py` exactly |
 | `tools/build_site.py` | Assembles the GitHub Pages build from `static/` and `web/` |
-| `submission/` | Presentation, brief, screen recording and machine-readable evidence |
+| `submission/` | Solution brief |
 
 ## Data and scope
 
@@ -92,13 +89,8 @@ The model has one SKU, one destination, five offers and indivisible ten-unit lot
 
 The Python server binds only to localhost and is intended for local judging, not public production hosting. The GitHub Pages demo is a separate static build that runs the agent in the browser: it has no server, makes no network calls after loading, and stores runs only in that browser, so nothing a visitor does leaves the page. Exported traces contain only synthetic operational data. `.env.example` is intentionally empty of credentials.
 
-## Submission
-
-Use the `TechTitan_*_agentic` files in `submission`. Public source and submission files: [TechTitan-RouteGuard-Agentic](https://github.com/realgauravvyas/TechTitan-RouteGuard-Agentic). See `docs/SUBMISSION_CHECKLIST.md`. Round 2 introduces a new challenge, so this Round 1 solution is not presented as the final-round project.
-
 ## Sources
 
 - [Official Round 1 problem statements and rubric](https://docs.google.com/document/d/1GaCXe9AuFv0KCMPI8wj6FCPHt5AcPYjdIqhgAIIyByA/edit)
 - [Competition and submission requirements](https://unstop.com/hackathons/agentic-ai-hackathon-tech-zephyr-40-indian-institute-of-technology-bhubaneswar-1742838/amp)
 
-Reviewed 12 September 2026. The listing shows registration closed on 10 September; the team should confirm its registration and submission deadline in its Unstop dashboard.
