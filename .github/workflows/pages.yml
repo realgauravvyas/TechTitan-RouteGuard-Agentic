@@ -31,6 +31,11 @@ jobs:
       - name: Python test suite
         run: python -m unittest discover -s tests -v
 
+      - name: Regenerate evidence and evaluation
+        run: |
+          python evaluate.py
+          python run_demo.py --scenario double_disruption --output submission/TechTitan_evidence_agentic.json
+
       - name: Browser engine matches engine.py
         run: node tools/conformance.mjs
 

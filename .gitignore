@@ -5,3 +5,9 @@ data/*.sqlite3*
 .venv/
 work/
 site/
+
+# generated submission outputs and media, kept local
+submission/*.json
+submission/*.mp4
+submission/*.srt
+submission/*.pptx
